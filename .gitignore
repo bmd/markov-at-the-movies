@@ -55,3 +55,9 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# PyCharm
+.idea/
+
+# My script version
+sw_3_script.txt
