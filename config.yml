@@ -1,0 +1,20 @@
+run_configs:
+    # location of the real movie script
+    script_path: sw_3_script.txt
+
+    # location of the output script
+    output_path: star_wars_markov.md
+
+    # "markdown" or "plaintext"
+    output_format: markdown
+
+generator_configs:
+    # number of words to use to generate random word
+    tuple_size: 4
+
+script_configs:
+    # requires 2 capturing groups e.g (CHARACTER): (dialog)
+    dialog_regex: ^([A-Z -]+):(.+)$
+
+    # requires 1 capturing group
+    scene_regex: ^[0-9]+ (.*)$
