@@ -59,7 +59,8 @@ class MarkovGenerator(object):
                                with if set.
         :return: (str) a string of randomly-generated text
         """
-        if override_seed:
+
+        if not override_seed:
             seed = random.randint(0, self.corpus_size - self.tuple_size)
         else:
             indices = [i for i, x in enumerate(self.corpus) if x == override_seed]
