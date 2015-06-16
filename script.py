@@ -13,8 +13,8 @@ class Script(object):
         prep script class variables for storing text once
         the script is parsed.
 
-        :param configs: (dict)
-        :return: None
+        :param settings: (dict) script configuration parameters
+                         to set as instance variables.
         """
         self.script_skeleton = []
         self.text = []
@@ -33,9 +33,9 @@ class Script(object):
         Load the text of the file specified by 'path', and split them
         into an array of lines using 'line_divider'.
 
-        :param path: (str) path to the
-        :param line_divider: (str: default "\n\n")
-        :return: None
+        :param path: (str) path to the script plaintext file to read.
+        :param line_divider: (str: default "\n\n") line divider character(s),
+                             used to split the file into lines.
         """
         with open(path, 'rU') as inf:
             self.text = [l.strip() for l in inf.read().split(line_divider)]
@@ -46,8 +46,6 @@ class Script(object):
         After loading the script, parse lines into the appropriate type (dialog,
         scene notes, settings), tokenize, and store them so they can be retrieved
         by the appropriate markov generator.
-
-        :return: None
         """
         scene_counter = 1
         scene_setting = re.compile(self.scene_regex)

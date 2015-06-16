@@ -14,8 +14,10 @@ class MarkovGenerator(object):
         generating-pseudo-random-text-with-markov-chains-u/
 
         :param corpus: (list) a source text of word tokens to generate random text from
-        :param tuple_size: (int: default 3)
-        :return: None
+        :param tuple_size: (int: default 3) the size of the tuple to use to generate
+                           text. A larger tuple will increase memory usage, but produce
+                           more realistic results
+
         """
         self.corpus = corpus
         self.corpus_size = len(corpus)
@@ -45,7 +47,6 @@ class MarkovGenerator(object):
 
         Set up the cache object to generate predicted strings.
 
-        :return: None
         """
         for word_tuple in self._generate_ngrams():
             self.cache[word_tuple[0:-1]].append(word_tuple[-1])
@@ -54,9 +55,9 @@ class MarkovGenerator(object):
         """ Generate a pseudo-random block of text
 
         :param size: (int) Length of text to generate. Should be << than the
-                     size of the total corpus for good results.
+                     size of the total corpus for good results
         :param override_seed: (str: default None) Word to seed the generator
-                               with if set.
+                               with if set
         :return: (str) a string of randomly-generated text
         """
 
